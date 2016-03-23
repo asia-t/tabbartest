@@ -45,6 +45,12 @@ class BlueViewController : UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
     }
     
+    override func viewDidLayoutSubviews() {
+        var searchBarFrame = searchController.searchBar.frame
+        searchBarFrame.size.width = vanillaSearchBar.frame.size.width
+        searchController.searchBar.frame = searchBarFrame
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.active && searchController.searchBar.text != "" {
             return filteredItems.count
